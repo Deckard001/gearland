@@ -1,0 +1,975 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="gearland">
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="0.00479297384384433 -0.0298962958663082 0.093737933830018"
+        rpy="0 0 0" />
+      <mass
+        value="0.0549295413957237" />
+      <inertia
+        ixx="1.86201527060156E-05"
+        ixy="3.64817341857591E-20"
+        ixz="1.02057543976793E-20"
+        iyy="2.82071539567185E-05"
+        iyz="3.7956447834542E-20"
+        izz="1.86201527060157E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://gearland/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.768627450980392 0.207843137254902 0.152941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://gearland/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="link1">
+    <inertial>
+      <origin
+        xyz="-0.0041068 -0.02975 -0.0082093"
+        rpy="0 0 0" />
+      <mass
+        value="0.041812" />
+      <inertia
+        ixx="9.4641E-06"
+        ixy="-8.5337E-07"
+        ixz="-6.0045E-08"
+        iyy="9.9336E-06"
+        iyz="-1.3526E-07"
+        izz="6.1048E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://gearland/meshes/link1.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.62745 0.62745 0.62745 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://gearland/meshes/link1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint1"
+    type="revolute">
+    <origin
+      xyz="0.13828 -0.13828 -0.032233"
+      rpy="1.5708 0 2.3562" />
+    <parent
+      link="base_link" />
+    <child
+      link="link1" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-1.05"
+      upper="1.05"
+      effort="200"
+      velocity="3" />
+  </joint>
+  <link
+    name="link2">
+    <inertial>
+      <origin
+        xyz="-0.0049686 0.055486 0.030742"
+        rpy="0 0 0" />
+      <mass
+        value="0.016364" />
+      <inertia
+        ixx="1.0763E-05"
+        ixy="8.534E-09"
+        ixz="-1.7034E-08"
+        iyy="1.3073E-05"
+        iyz="4.0005E-06"
+        izz="8.4248E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://gearland/meshes/link2.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.62745 0.62745 0.62745 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://gearland/meshes/link2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint2"
+    type="revolute">
+    <origin
+      xyz="-0.092382 -0.076994 -0.0051981"
+      rpy="1.2457 -1.5708 0" />
+    <parent
+      link="link1" />
+    <child
+      link="link2" />
+    <axis
+      xyz="0 0 0" />
+    <limit
+      lower="-1.57"
+      upper="1.57"
+      effort="200"
+      velocity="3" />
+  </joint>
+  <link
+    name="link3">
+    <inertial>
+      <origin
+        xyz="-0.032981 0.0040148 -0.0090437"
+        rpy="0 0 0" />
+      <mass
+        value="0.010524" />
+      <inertia
+        ixx="1.7858E-06"
+        ixy="6.8301E-08"
+        ixz="-3.2504E-07"
+        iyy="4.1445E-06"
+        iyz="3.3344E-08"
+        izz="2.5138E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://gearland/meshes/link3.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.74902 0.74902 0.74902 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://gearland/meshes/link3.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint3"
+    type="revolute">
+    <origin
+      xyz="0.14945 -0.14945 -0.012533"
+      rpy="1.5708 -1.0075 2.3562" />
+    <parent
+      link="base_link" />
+    <child
+      link="link3" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="-1.57"
+      upper="1.57"
+      effort="200"
+      velocity="3" />
+  </joint>
+  <link
+    name="link4">
+    <inertial>
+      <origin
+        xyz="-0.0049686 0.055486 0.030742"
+        rpy="0 0 0" />
+      <mass
+        value="0.016364" />
+      <inertia
+        ixx="1.0763E-05"
+        ixy="8.534E-09"
+        ixz="-1.7034E-08"
+        iyy="1.3073E-05"
+        iyz="4.0005E-06"
+        izz="8.4248E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://gearland/meshes/link4.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.62745 0.62745 0.62745 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://gearland/meshes/link4.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint4"
+    type="revolute">
+    <origin
+      xyz="-0.12265 0.013123 -0.0051981"
+      rpy="-3.009 -1.5708 0.7854" />
+    <parent
+      link="link3" />
+    <child
+      link="link4" />
+    <axis
+      xyz="0 0 0" />
+    <limit
+      lower="-1.57"
+      upper="1.57"
+      effort="200"
+      velocity="3" />
+  </joint>
+  <link
+    name="link5">
+    <inertial>
+      <origin
+        xyz="-0.0041068 -0.02975 -0.048497"
+        rpy="0 0 0" />
+      <mass
+        value="0.041812" />
+      <inertia
+        ixx="9.4641E-06"
+        ixy="-8.5337E-07"
+        ixz="-6.0045E-08"
+        iyy="9.9336E-06"
+        iyz="-1.3526E-07"
+        izz="6.1048E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://gearland/meshes/link5.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.62745 0.62745 0.62745 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://gearland/meshes/link5.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint5"
+    type="revolute">
+    <origin
+      xyz="0.082844 0.0062339 -0.032233"
+      rpy="1.5708 0 -2.3562" />
+    <parent
+      link="base_link" />
+    <child
+      link="link5" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-1.05"
+      upper="1.05"
+      effort="200"
+      velocity="3" />
+  </joint>
+  <link
+    name="link6">
+    <inertial>
+      <origin
+        xyz="-0.0049686 0.055486 0.030742"
+        rpy="0 0 0" />
+      <mass
+        value="0.016364" />
+      <inertia
+        ixx="1.0763E-05"
+        ixy="8.534E-09"
+        ixz="-1.7034E-08"
+        iyy="1.3073E-05"
+        iyz="4.0005E-06"
+        izz="8.4248E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://gearland/meshes/link6.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.62745 0.62745 0.62745 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://gearland/meshes/link6.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint6"
+    type="revolute">
+    <origin
+      xyz="-0.092382 -0.076994 -0.045486"
+      rpy="1.2457 -1.5708 0" />
+    <parent
+      link="link5" />
+    <child
+      link="link6" />
+    <axis
+      xyz="0 0 0" />
+    <limit
+      lower="-1.57"
+      upper="1.57"
+      effort="200"
+      velocity="3" />
+  </joint>
+  <link
+    name="link7">
+    <inertial>
+      <origin
+        xyz="-0.032981 0.0040148 -0.041305"
+        rpy="0 0 0" />
+      <mass
+        value="0.010524" />
+      <inertia
+        ixx="1.7858E-06"
+        ixy="6.8301E-08"
+        ixz="-3.2504E-07"
+        iyy="4.1445E-06"
+        iyz="3.3344E-08"
+        izz="2.5138E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://gearland/meshes/link7.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.74902 0.74902 0.74902 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://gearland/meshes/link7.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint7"
+    type="revolute">
+    <origin
+      xyz="0.099692 0.01173 -0.012533"
+      rpy="1.5708 -1.0075 -2.3562" />
+    <parent
+      link="base_link" />
+    <child
+      link="link7" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="-1.57"
+      upper="1.57"
+      effort="200"
+      velocity="3" />
+  </joint>
+  <link
+    name="link8">
+    <inertial>
+      <origin
+        xyz="-0.0049686 0.055486 0.030742"
+        rpy="0 0 0" />
+      <mass
+        value="0.016364" />
+      <inertia
+        ixx="1.0763E-05"
+        ixy="8.534E-09"
+        ixz="-1.7034E-08"
+        iyy="1.3073E-05"
+        iyz="4.0005E-06"
+        izz="8.4248E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://gearland/meshes/link8.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.62745 0.62745 0.62745 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://gearland/meshes/link8.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint8"
+    type="revolute">
+    <origin
+      xyz="-0.12265 0.013123 -0.037459"
+      rpy="0.23815 -1.5708 0" />
+    <parent
+      link="link7" />
+    <child
+      link="link8" />
+    <axis
+      xyz="0 0 0" />
+    <limit
+      lower="-1.57"
+      upper="1.57"
+      effort="200"
+      velocity="3" />
+  </joint>
+  <link
+    name="link9">
+    <inertial>
+      <origin
+        xyz="-0.0041068 -0.02975 0.036675"
+        rpy="0 0 0" />
+      <mass
+        value="0.041812" />
+      <inertia
+        ixx="9.4641E-06"
+        ixy="-8.5337E-07"
+        ixz="-6.0045E-08"
+        iyy="9.9336E-06"
+        iyz="-1.3526E-07"
+        izz="6.1048E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://gearland/meshes/link9.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.62745 0.62745 0.62745 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://gearland/meshes/link9.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint9"
+    type="revolute">
+    <origin
+      xyz="-0.13348 -0.13348 -0.032233"
+      rpy="1.5708 0 0.7854" />
+    <parent
+      link="base_link" />
+    <child
+      link="link9" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-1.05"
+      upper="1.05"
+      effort="200"
+      velocity="3" />
+  </joint>
+  <link
+    name="link10">
+    <inertial>
+      <origin
+        xyz="-0.0049686 0.055486 0.030742"
+        rpy="0 0 0" />
+      <mass
+        value="0.016364" />
+      <inertia
+        ixx="1.0763E-05"
+        ixy="8.534E-09"
+        ixz="-1.7034E-08"
+        iyy="1.3073E-05"
+        iyz="4.0005E-06"
+        izz="8.4248E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://gearland/meshes/link10.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.62745 0.62745 0.62745 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://gearland/meshes/link10.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint10"
+    type="revolute">
+    <origin
+      xyz="-0.092382 -0.076994 0.039686"
+      rpy="1.2457 -1.5708 0" />
+    <parent
+      link="link9" />
+    <child
+      link="link10" />
+    <axis
+      xyz="0 0 0" />
+    <limit
+      lower="-1.57"
+      upper="1.57"
+      effort="200"
+      velocity="3" />
+  </joint>
+  <link
+    name="link11">
+    <inertial>
+      <origin
+        xyz="-0.032981 0.0040148 0.043723"
+        rpy="0 0 0" />
+      <mass
+        value="0.010524" />
+      <inertia
+        ixx="1.7858E-06"
+        ixy="6.8301E-08"
+        ixz="-3.2504E-07"
+        iyy="4.1445E-06"
+        iyz="3.3344E-08"
+        izz="2.5138E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://gearland/meshes/link11.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.74902 0.74902 0.74902 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://gearland/meshes/link11.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint11"
+    type="revolute">
+    <origin
+      xyz="-0.15023 -0.13908 -0.012533"
+      rpy="1.5708 -1.0075 0.7854" />
+    <parent
+      link="base_link" />
+    <child
+      link="link11" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="-1.57"
+      upper="1.57"
+      effort="200"
+      velocity="3" />
+  </joint>
+  <link
+    name="link12">
+    <inertial>
+      <origin
+        xyz="-0.0049686 0.055486 0.030742"
+        rpy="0 0 0" />
+      <mass
+        value="0.016364" />
+      <inertia
+        ixx="1.0763E-05"
+        ixy="8.534E-09"
+        ixz="-1.7034E-08"
+        iyy="1.3073E-05"
+        iyz="4.0005E-06"
+        izz="8.4248E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://gearland/meshes/link12.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.62745 0.62745 0.62745 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://gearland/meshes/link12.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint12"
+    type="revolute">
+    <origin
+      xyz="-0.12265 0.013123 0.047569"
+      rpy="0.23815 -1.5708 0" />
+    <parent
+      link="link11" />
+    <child
+      link="link12" />
+    <axis
+      xyz="0 0 0" />
+    <limit
+      lower="-1.57"
+      upper="1.57"
+      effort="200"
+      velocity="3" />
+  </joint>
+  <link
+    name="link13">
+    <inertial>
+      <origin
+        xyz="-0.0041068 -0.02975 0.00022775"
+        rpy="0 0 0" />
+      <mass
+        value="0.041812" />
+      <inertia
+        ixx="9.4641E-06"
+        ixy="-8.5337E-07"
+        ixz="-6.0045E-08"
+        iyy="9.9336E-06"
+        iyz="-1.3526E-07"
+        izz="6.1048E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://gearland/meshes/link13.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.62745 0.62745 0.62745 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://gearland/meshes/link13.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint13"
+    type="revolute">
+    <origin
+      xyz="-0.12273 -0.043233 -0.032233"
+      rpy="1.5708 0 -0.7854" />
+    <parent
+      link="base_link" />
+    <child
+      link="link13" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-1.05"
+      upper="1.05"
+      effort="200"
+      velocity="3" />
+  </joint>
+  <link
+    name="link14">
+    <inertial>
+      <origin
+        xyz="-0.0049686 0.055486 0.030742"
+        rpy="0 0 0" />
+      <mass
+        value="0.016364" />
+      <inertia
+        ixx="1.0763E-05"
+        ixy="8.534E-09"
+        ixz="-1.7034E-08"
+        iyy="1.3073E-05"
+        iyz="4.0005E-06"
+        izz="8.4248E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://gearland/meshes/link14.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.62745 0.62745 0.62745 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://gearland/meshes/link14.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint14"
+    type="revolute">
+    <origin
+      xyz="-0.092382 -0.076994 0.003239"
+      rpy="1.2457 -1.5708 0" />
+    <parent
+      link="link13" />
+    <child
+      link="link14" />
+    <axis
+      xyz="0 0 0" />
+    <limit
+      lower="-1.57"
+      upper="1.57"
+      effort="200"
+      velocity="3" />
+  </joint>
+  <link
+    name="link15">
+    <inertial>
+      <origin
+        xyz="-0.032981 0.0040148 0.0012093"
+        rpy="0 0 0" />
+      <mass
+        value="0.010524" />
+      <inertia
+        ixx="1.7858E-06"
+        ixy="6.8301E-08"
+        ixz="-3.2504E-07"
+        iyy="4.1445E-06"
+        iyz="3.3344E-08"
+        izz="2.5138E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://gearland/meshes/link15.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.74902 0.74902 0.74902 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://gearland/meshes/link15.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint15"
+    type="revolute">
+    <origin
+      xyz="-0.13261 -0.030777 -0.012533"
+      rpy="1.5708 -1.0075 -0.7854" />
+    <parent
+      link="base_link" />
+    <child
+      link="link15" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="-1.57"
+      upper="1.57"
+      effort="200"
+      velocity="3" />
+  </joint>
+  <link
+    name="link16">
+    <inertial>
+      <origin
+        xyz="-0.0049686 0.055486 0.030742"
+        rpy="0 0 0" />
+      <mass
+        value="0.016364" />
+      <inertia
+        ixx="1.0763E-05"
+        ixy="8.534E-09"
+        ixz="-1.7034E-08"
+        iyy="1.3073E-05"
+        iyz="4.0005E-06"
+        izz="8.4248E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://gearland/meshes/link16.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.62745 0.62745 0.62745 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://gearland/meshes/link16.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint16"
+    type="revolute">
+    <origin
+      xyz="-0.12265 0.013123 0.0050549"
+      rpy="0.23815 -1.5708 0" />
+    <parent
+      link="link15" />
+    <child
+      link="link16" />
+    <axis
+      xyz="0 0 0" />
+    <limit
+      lower="-1.57"
+      upper="1.57"
+      effort="200"
+      velocity="3" />
+  </joint>
+</robot>
