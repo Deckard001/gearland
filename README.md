@@ -14,3 +14,9 @@ sudo apt-key adv --keyserver 'hkp://keyserver.ubuntu.com:80' --recv-key C1CF6E31
 sudo apt update
 
 sudo apt install ros-melodic-ros-controllers
+
+
+
+OTRO CODIGO
+
+source /opt/ros/melodic/setup.bash
