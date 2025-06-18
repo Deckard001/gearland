@@ -1,3 +1,39 @@
+# Publish all joint states -----------------------------------
+joint_state_controller:
+  type: joint_state_controller/JointStateController
+  publish_rate: 50
+
+# Joint Trajectory Controller -------------------------------
+# This is the main controller that accepts position commands
+joint_trajectory_controller:
+  type: "position_controllers/JointTrajectoryController"
+  joints:
+    - front_right_hip_joint
+    - front_right_knee_joint
+    - front_left_hip_joint
+    - front_left_knee_joint
+    - rear_right_hip_joint
+    - rear_right_knee_joint
+    - rear_left_hip_joint
+    - rear_left_knee_joint
+
+  gains: # Optional, but good practice for stability
+    front_right_hip_joint:  {p: 100.0, i: 0.01, d: 10.0}
+    front_right_knee_joint: {p: 100.0, i: 0.01, d: 10.0}
+    front_left_hip_joint:   {p: 100.0, i: 0.01, d: 10.0}
+    front_left_knee_joint:  {p: 100.0, i: 0.01, d: 10.0}
+    rear_right_hip_joint:   {p: 100.0, i: 0.01, d: 10.0}
+    rear_right_knee_joint:  {p: 100.0, i: 0.01, d: 10.0}
+    rear_left_hip_joint:    {p: 100.0, i: 0.01, d: 10.0}
+    rear_left_knee_joint:   {p: 100.0, i: 0.01, d: 10.0}
+
+
+
+
+
+
+
+
 
 "<gazebo>
     <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
