@@ -1,7 +1,4 @@
 
-ejemplo
-
-
 <gazebo>
     <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
       <robotNamespace>/</robotNamespace>
@@ -99,7 +96,11 @@ mkdir launch urdf config scripts
 
 
 
-
+<gazebo>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+      <robotNamespace>/</robotNamespace>
+    </plugin>
+  </gazebo>
 
 
 
