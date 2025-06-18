@@ -1,3 +1,17 @@
+<gazebo>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+      <robotNamespace>/</robotNamespace>
+    </plugin>
+  </gazebo>
+
+
+
+
+
+
+
+
+
 <xacro:macro name="leg" params="prefix x_reflect y_reflect">
     
     <link name="${prefix}_femur_link">
