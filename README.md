@@ -1,14 +1,72 @@
-# Create a new workspace directory
+<xacro:macro name="leg" params="prefix x_reflect y_reflect">
+    
+    <link name="${prefix}_femur_link">
+      ...
+    </link>
+
+    <joint name="${prefix}_hip_joint" type="revolute">
+      ...
+    </joint>
+    <transmission name="${prefix}_hip_trans">
+      <type>transmission_interface/SimpleTransmission</type>
+      <joint name="${prefix}_hip_joint">
+        <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      </joint>
+      <actuator name="${prefix}_hip_motor">
+        <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+    </transmission>
+
+    <link name="${prefix}_tibia_link">
+      ...
+    </link>
+
+    <joint name="${prefix}_knee_joint" type="revolute">
+      ...
+    </joint>
+    <transmission name="${prefix}_knee_trans">
+      <type>transmission_interface/SimpleTransmission</type>
+      <joint name="${prefix}_knee_joint">
+        <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      </joint>
+      <actuator name="${prefix}_knee_motor">
+        <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+    </transmission>
+
+    ...
+</xacro:macro>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  Create a new workspace directory
 mkdir -p ~/catkin_ws/src
 cd ~/catkin_ws/src
 
-# Create the package with necessary dependencies
-# Make sure you have these installed: sudo apt-get install ros-<distro>-ros-control ros-<distro>-ros-controllers ros-<distro>-gazebo-ros-control
+       Create the package with necessary dependencies
+           Make sure you have these installed: sudo apt-get install ros-<distro>-ros-control ros-<distro>-ros-controllers ros-<distro>-gazebo-ros-control
 catkin_create_pkg quadruped_control rospy controller_manager joint_state_controller joint_trajectory_controller gazebo_ros_control
 
-# Create folders for our files
+          Create folders for our files
 cd quadruped_control
 mkdir launch urdf config scripts
+
+
 
 
 
