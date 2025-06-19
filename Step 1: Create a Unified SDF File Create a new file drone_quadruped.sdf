@@ -1,0 +1,25 @@
+<?xml version='1.0'?>
+<sdf version='1.6'>
+  <model name="drone_quadruped">
+    <!-- Include Iris drone (SDF) -->
+    <include>
+      <uri>model://iris_with_ardupilot</uri>
+      <name>iris_drone</name>
+    </include>
+    
+    <!-- Include Quadruped (converted from URDF to SDF) -->
+    <model name="quadruped">
+      <pose>0 0 -0.2 0 0 0</pose>  <!-- Position below drone -->
+      <!-- Convert quadruped.xacro to SDF using this command:
+           rosrun xacro xacro quadruped.xacro > quadruped.urdf
+           gz sdf -p quadruped.urdf > quadruped.sdf
+           Then paste contents here -->
+    </model>
+
+    <!-- Create fixed joint between drone and quadruped -->
+    <joint name="drone_quad_joint" type="fixed">
+      <parent>iris_drone::base_link</parent>
+      <child>quadruped::base_link</child>
+    </joint>
+  </model>
+</sdf>
