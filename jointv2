@@ -1,0 +1,10 @@
+<launch>
+    <include file="$(find gazebo_ros)/launch/iris_world.launch" />
+
+    <!-- Static transform from drone to quadruped -->
+    <node pkg="tf" type="static_transform_publisher" name="drone_to_quadruped_broadcaster"
+          args="0 0 -0.2 0 0 0 iris_with_ardupilot/base_link quadruped/base_link 100" />
+
+    <!-- This launch file handles loading and spawning the quadruped model -->
+    <include file="$(find quadruped_control)/launch/spawn_quadruped.launch" />
+</launch>
