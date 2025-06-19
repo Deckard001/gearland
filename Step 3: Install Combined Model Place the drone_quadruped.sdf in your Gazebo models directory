@@ -1,0 +1,2 @@
+mkdir -p ~/.gazebo/models/drone_quadruped
+mv drone_quadruped.sdf ~/.gazebo/models/drone_quadruped/model.sdf
