@@ -1,18 +1,19 @@
-<?xml version="1.0"?>
-<model>
-  <name>My Hexapod</name>
-  <version>1.0</version>
-  <sdf version="1.6">model.sdf</sdf> <author>
-    <name>Your Name</name>
-    <email>your@email.com</email>
-  </author>
+<launch>
+    <include file="$(find px4)/launch/iris.launch" />
 
-  <description>
-    A model of a six-legged hexapod robot.
-  </description>
-</model>
 
-<include>
-  <uri>model://my_hexapod</uri> <name>hexapod</name>
-  <pose>0 0 0.5 0 0 0</pose>
-</include>
+    <param name="hexapod_description"
+           command="$(find xacro)/xacro '$(find hexapod_description)/urdf/hexapod.xacro'"/>
+
+    <node name="spawn_hexapod" pkg="gazebo_ros" type="spawn_model"
+          args="-param hexapod_description -urdf -model hexapod -z 0.3"
+          output="screen"/>
+
+
+    <node pkg="tf" type="static_transform_publisher" name="drone_to_hexapod_broadcaster"
+          args="0 0 -0.2 0 0 0 iris/base_link hexapod/base_link 100" />
+
+
+    <include file="$(find hexapod_description)/launch/quadruped.launch" />
+
+</launch>
