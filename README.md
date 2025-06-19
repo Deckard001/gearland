@@ -1,3 +1,32 @@
+<?xml version="1.0"?>
+<model>
+  <name>My Hexapod</name>
+  <version>1.0</version>
+  <sdf version="1.6">model.sdf</sdf> <author>
+    <name>Your Name</name>
+    <email>your@email.com</email>
+  </author>
+
+  <description>
+    A model of a six-legged hexapod robot.
+  </description>
+</model>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 install(DIRECTORY launch/
   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/launch
 )
