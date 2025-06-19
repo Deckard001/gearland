@@ -1,0 +1,5 @@
+# Convert Xacro to URDF
+rosrun xacro xacro $(find quadruped_control)/urdf/quadruped.xacro > quadruped.urdf
+
+# Convert URDF to SDF
+gz sdf -p quadruped.urdf > quadruped.sdf
