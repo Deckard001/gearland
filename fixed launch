@@ -2,14 +2,13 @@
     <!-- Launch Gazebo world with Iris drone -->
     <include file="$(find gazebo_ros)/launch/iris_world.launch" />
 
-    <!-- Convert quadruped Xacro to URDF and spawn as a single model -->
+    <!-- Convert quadruped Xacro to URDF -->
     <param name="robot_description" 
            command="$(find xacro)/xacro '$(find quadruped_control)/urdf/quadruped.xacro'" />
 
-    <!-- Spawn the unified model (quadruped attached to Iris) -->
+    <!-- Spawn unified model -->
     <node name="spawn_unified_model" pkg="gazebo_ros" type="spawn_model"
-          args="-urdf -param robot_description -model iris_quadruped -z 0.1
-                -unpause -wait $(arg model_name)"  <!-- Ensure Iris is loaded first -->
+          args="-urdf -param robot_description -model iris_quadruped -z 0.1"
           output="screen"/>
 
     <!-- Publish static transform from Iris base to quadruped base -->
