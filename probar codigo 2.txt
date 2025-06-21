@@ -1,0 +1,171 @@
+#!/usr/bin/env python
+
+# This script is designed for Python 2.7 (ROS Melodic)
+
+import rospy
+from trajectory_msgs.msg import JointTrajectory, JointTrajectoryPoint
+import math
+import numpy as np
+import transformations
+
+#==============================================================================
+# Inverse Kinematics and Geometry Functions
+#==============================================================================
+
+def inversekinematic(x1, y1, z1, l2):
+    """
+    Calculates two joint angles (hip and knee) for a single leg using inverse kinematics.
+    Now incorporates Z-coordinate to adjust for vertical displacement.
+
+    Args:
+        x1 (float): Target x-coordinate for the foot.
+        y1 (float): Target y-coordinate for the foot.
+        z1 (float): Target z-coordinate for the foot (vertical displacement).
+        l2 (float): Vertical offset parameter.
+
+    Returns:
+        tuple: Hip and knee angles in radians (hip_angle, knee_angle).
+    """
+    # Adjust Y-coordinate with Z-displacement
+    adjusted_y = y1 - z1
+    num = adjusted_y - l2
+    den = x1
+
+    # Calculate the first angle (theta1)
+    angle_radians1 = math.atan2(num, den)
+    angle_degrees1 = math.degrees(angle_radians1)
+
+    # Normalize angle to [0, 360) range
+    if angle_degrees1 < 0:
+        angle_degrees1 += 360
+
+    # Apply quadrant-specific adjustments
+    if 90 < angle_degrees1 < 180:
+        angle_degrees1 -= 90
+    elif 180 < angle_degrees1 < 270:
+        angle_degrees1 -= 180
+    elif 270 < angle_degrees1 < 360:
+        angle_degrees1 -= 270
+
+    # Calculate knee angle and final hip angle
+    angle_degrees2 = 90 - angle_degrees1
+    angle_radians2 = math.radians(angle_degrees2)  # Knee joint angle
+    hip_angle = 1.5708 - angle_radians2            # Hip joint angle
+
+    return hip_angle, angle_radians2
+
+def rotate_square_vertices(roll, pitch, yaw):
+    """
+    Calculates new 3D positions of rectangle vertices after rotation.
+    Same as original.
+    """
+    length = 160 / 2.0
+    width = 290 / 2.0
+
+    initial_vertices = np.array([
+        [-length, -width, 0],  # rear_left
+        [ length, -width, 0],  # rear_right
+        [ length,  width, 0],  # front_right
+        [-length,  width, 0]   # front_left
+    ])
+
+    roll_rad = math.radians(roll)
+    pitch_rad = math.radians(pitch)
+    yaw_rad = math.radians(yaw)
+
+    rotation_matrix = transformations.euler_matrix(yaw_rad, pitch_rad, roll_rad, 'szyx')
+
+    initial_vertices_homogeneous = np.ones((4, 4))
+    initial_vertices_homogeneous[:, :3] = initial_vertices
+    rotated_vertices_homogeneous = np.dot(rotation_matrix, initial_vertices_homogeneous.T).T
+
+    rotated_vertices = rotated_vertices_homogeneous[:, :3]
+
+    return rotated_vertices
+
+#==============================================================================
+# Main ROS Publisher Function
+#==============================================================================
+
+def joint_mover_with_ik():
+    roll_angle = 30.0
+    pitch_angle = 30.0
+    yaw_angle = 0.0
+    l2 = 73.0
+
+    # Calculate rotated foot positions
+    foot_positions = rotate_square_vertices(roll_angle, pitch_angle, yaw_angle)
+
+    calculated_target_angles = {}
+
+    # Front Right Leg (Vertex 2)
+    fr_vtx = foot_positions[2]
+    hip_rad, knee_rad = inversekinematic(
+        fr_vtx[0], 
+        fr_vtx[1], 
+        fr_vtx[2],  # Include Z-coordinate
+        l2
+    )
+    calculated_target_angles['front_right_hip_joint'] = hip_rad
+    calculated_target_angles['front_right_knee_joint'] = -knee_rad
+
+    # Front Left Leg (Vertex 3)
+    fl_vtx = foot_positions[3]
+    hip_rad, knee_rad = inversekinematic(
+        -fl_vtx[0], 
+        fl_vtx[1], 
+        fl_vtx[2],  # Include Z-coordinate
+        l2
+    )
+    calculated_target_angles['front_left_hip_joint'] = hip_rad
+    calculated_target_angles['front_left_knee_joint'] = -knee_rad
+
+    # Rear Right Leg (Vertex 1)
+    rr_vtx = foot_positions[1]
+    hip_rad, knee_rad = inversekinematic(
+        rr_vtx[0], 
+        -rr_vtx[1], 
+        rr_vtx[2],  # Include Z-coordinate
+        l2
+    )
+    calculated_target_angles['rear_right_hip_joint'] = hip_rad
+    calculated_target_angles['rear_right_knee_joint'] = -knee_rad
+
+    # Rear Left Leg (Vertex 0)
+    rl_vtx = foot_positions[0]
+    hip_rad, knee_rad = inversekinematic(
+        -rl_vtx[0], 
+        -rl_vtx[1], 
+        rl_vtx[2],  # Include Z-coordinate
+        l2
+    )
+    calculated_target_angles['rear_left_hip_joint'] = hip_rad
+    calculated_target_angles['rear_left_knee_joint'] = -knee_rad
+
+    rospy.init_node('joint_mover_ik_node', anonymous=True)
+    pub = rospy.Publisher('/joint_trajectory_controller/command', JointTrajectory, queue_size=10)
+    rospy.sleep(1.0)
+
+    msg = JointTrajectory()
+    msg.header.stamp = rospy.Time.now()
+    msg.joint_names = [
+        'front_right_hip_joint', 'front_right_knee_joint',
+        'front_left_hip_joint',  'front_left_knee_joint',
+        'rear_right_hip_joint',  'rear_right_knee_joint',
+        'rear_left_hip_joint',   'rear_left_knee_joint'
+    ]
+
+    point = JointTrajectoryPoint()
+    point.positions = [calculated_target_angles[name] for name in msg.joint_names]
+    point.time_from_start = rospy.Duration(2.0)
+    msg.points.append(point)
+
+    pub.publish(msg)
+    rospy.loginfo("Publishing joint command with Z-adaptation")
+    rospy.loginfo("Target Angles (rad): {}".format(point.positions))
+
+if __name__ == '__main__':
+    try:
+        joint_mover_with_ik()
+    except rospy.ROSInterruptException:
+        pass
