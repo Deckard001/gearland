@@ -1,0 +1,61 @@
+    export GITNAME="Your Name"
+    export GITEMAIL="your@email.com"
+     
+    git config --global user.name $GITNAME
+    git config --global user.email $GITEMAIL
+     
+    sudo apt-get update
+    sudo apt-get install -y \
+    build-essential \
+    checkinstall \
+    curl \
+    wget \
+    git \
+    git-core \
+    bc \
+    python3 \
+    gawk \
+    gnupg \
+    flex \
+    bison \
+    zip \
+    curl \
+    zlib1g-dev \
+    gcc-multilib \
+    g++-multilib \
+    libc6-dev-i386 \
+    x11proto-core-dev \
+    libx11-dev \
+    lib32z1-dev \
+    libgl1-mesa-dev \
+    libxml2-utils \
+    xsltproc \
+    unzip \
+    fontconfig \
+    libreadline-dev \
+    libncurses5-dev \
+    libncursesw5-dev \
+    libssl-dev \
+    libsqlite3-dev \
+    tk-dev \
+    dosfstools \
+    libgdbm-dev \
+    libc6-dev \
+    libbz2-dev \
+    silversearcher-ag \
+    cpio \
+    lz4 \
+    python-is-python3 \
+     
+    mkdir tinkerboard2-build
+    cd tinkerboard2-build
+     
+    repo init -u https://github.com/TinkerBoard-Android/rockchip-android-manifest.git -b android11-rockchip -m tinker_board_2-android11-2.0.8.xml
+     
+    repo sync -j4
+     
+    sed -i '/struct device_node \*node = dev->of_node;/d' kernel/drivers/media/i2c/cam_sensor/cam_imx219.c
+     
+    source build/envsetup.sh
+    lunch WW_Tinker_Board_2-userdebug
+    ./build.sh -UKAu -J 4
