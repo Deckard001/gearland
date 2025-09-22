@@ -59,3 +59,27 @@
     source build/envsetup.sh
     lunch WW_Tinker_Board_2-userdebug
     ./build.sh -UKAu -J 4
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+rm /home/usuario/tinkerboard2-build/prebuilts/clang/host/darwin-x86/.git/index.lock
