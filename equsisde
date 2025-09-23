@@ -75,11 +75,6 @@
 
 
 
-
-
-
-
-rm -f ~/tinkerboard2-build/prebuilts/clang/host/linux-x86/.git/index.lock
-
+repo forall -c 'rm -f .git/index.lock'
 repo forall -c 'git reset --hard ; git clean -fdx'
 repo sync
