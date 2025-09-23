@@ -85,3 +85,16 @@
 rm /home/usuario/tinkerboard2-build/prebuilts/clang/host/darwin-x86/.git/index.lock
 
 rm -rf platform/prebuilts/clang/host/darwin-x86
+
+
+
+
+
+
+
+
+
+repo forall -c 'git reset --hard ; git clean -fdx'
+
+
+repo sync
