@@ -29,7 +29,7 @@ adb connect <ip-de-la-tinkerboard>:5555
 
 
 
-k-8-jre openjdk-8-jre-headless
+sudo apt-get install openjdk-8-jre openjdk-8-jre-headless
 java -jar AdbRemoteScreen.jar
 java -jar AdbRemoteScreen.jar /usr/bin/adb  (to specify what adb to use when launching)
 
